@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Bungee|Press+Start+2P" rel="stylesheet"> 
+<style>
+* {
+font-family: "Press Start 2P";
+clear: both;
+color: white;
+}
+h1 {
+font-family:  !important;
+font-size: 5.5vw;
+line-height: 0vw;
+color: #acd044;
+text-shadow: 9px 9px 0px black;
+}
+
+h2{
+font-size: 18px;
+text-align: center;
+color: rgba(255,255,255,1.0);
+text-shadow: 3px 3px 0px black;
+}
+
+h3 {
+text-align: center;
+text-shadow: 3px 3px 0px black;
+font-size: 2.5vw;
+}
+.cbox {
+margin: 0 auto;
+width: 95%;
+background: url("cnt_bak.png") repeat;
+border-radius: 9px;
+padding: 10px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border: 1px solid gray;
+}
+
+body {
+background: url("bak1.jpg");
+background-position: center top;
+background-size: cover;
+}
+
+#credit{
+position: absolute;
+right: 0;
+bottom: 0;
+font-size: 9px;
+}
+#credit a, #credit {
+color: rgba(255,255,255,0.7);
+}
+#credit a:hover {
+color: white;
+}
+</style>
+</head>
+<body>
+<h3>Magfest 2017 // January 5, 2017</h3>
+<div class="cbox">
+<h1 id="countdown"></h1>
+<h2>days : hours : minutes : seconds : milliseconds<h2>
+</div>
+<div id="credit">Coded by <a href="#">Nine's Guard</a>, Photos found <a href="https://imgur.com/a/tjz8n#ZoP6YaN">here</a>, by Jakuub.</div>
+<script>
+var magfest2017 = new Date("January 5, 2017 00:00:09");
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var countdown;
+
+function countdownMagfest() {
+	var now = new Date();
+	var countdownAmt = magfest2017 - now;
+	if (countdownAmt < 0) {clearInterval(countdown)}
+	var days = Math.floor(countdownAmt / _day);
+    var hours = Math.floor( (countdownAmt % _day ) / _hour );
+    var minutes = Math.floor( (countdownAmt % _hour) / _minute );
+    var seconds = Math.floor( (countdownAmt % _minute) / _second );
+    var milliseconds = countdownAmt % _second;
+	
+	var a = document.getElementById('countdown')
+	a.innerHTML = days  + ':' + 
+                                 hours + ':' +
+                                 minutes + ':' +
+                                 seconds + ':' +
+                                 milliseconds;
+}
+
+countdown = setInterval(countdownMagfest, 10);
+</script>
